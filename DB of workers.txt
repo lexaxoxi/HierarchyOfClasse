@@ -1,0 +1,7 @@
+[Alex][Moskovkin][2][45000]
+[Anna][Moskovkina][2][40000]
+[Arina][Moskovkina][0][25000]
+[Agnia][Moskovkina][1][35000]
+[Alex2][Oskovkin][0][40000]
+[Alex3][Skovkin][1][35000]
+[Alex4][Kovkin][2][25000]
