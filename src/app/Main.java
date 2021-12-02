@@ -2,21 +2,23 @@ package app;
 
 import methods.WorkerRepository;
 import methods.WorkerRepositoryImpl;
-import models.Worker;
-
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        WorkerRepository workersRepository = new WorkerRepositoryImpl();
-        List<Worker> workers = workersRepository.findAll();
-        System.out.println("Информация о всех сотрудниках:");
+       WorkerRepository workerRepository = new WorkerRepositoryImpl();
 
-        for (Worker worker : workers) {
-            System.out.println(worker.getName() + " " + worker.getSurname() + " " + worker.getFunctionOfWorker() + " " + worker.getSalary());
-        }
+       System.out.println("\n"+"Информация о всех сотрудниках:");
+       System.out.println(workerRepository.findAll());
 
-        //todo сдеалть вывод фио и зп по возрастанию
+       System.out.println("\n"+"Следующий метод- поиск по имени:");
+       System.out.println(workerRepository.findByName("Alex"));
+
+        System.out.println("\n"+"Следующий метод- сумма зарплат организации:");
+        System.out.println(workerRepository.getSumOfSalary());
+
+       //todo сделать вывод фио и зп по возрастанию
+        System.out.println("\n"+"Информация о зарплате сотрудников:");
+        System.out.println("ФИО: " + workerRepository.getSalary());
 
 
     }

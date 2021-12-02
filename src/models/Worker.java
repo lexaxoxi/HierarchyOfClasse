@@ -1,92 +1,93 @@
 package models;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
 public class Worker {
-    private String name;
-    private String surname;
-    private String functionOfWorker[];//0 - монтажник,1 - каменоломщик,2 - разработчик
-    private int salary;
+    private String Name;
+    private String Surname;
+    private String FunctionOfWorker;
+    private int Salary;
 
 
-    public Worker(String name, String surname, String[] functionOfWorker, int salary) {
-        this.name = name;
-        this.surname = surname;
-        this.functionOfWorker = functionOfWorker;
-        this.salary = salary;
-        functionOfWorker = new String[3];
-        functionOfWorker[0] = new String("монтажник");
-        functionOfWorker[1] = new String("каменоломщик");
-        functionOfWorker[2] = new String("разработчик");
-        System.out.println(functionOfWorker);
-
+    public Worker(String name, String surname, String functionOfWorker, int salary) {
+        Name = name;
+        Surname = surname;
+        FunctionOfWorker = functionOfWorker;
+        Salary = salary;
     }
 
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        Name = name;
     }
 
     public String getSurname() {
-        return surname;
+        return Surname;
     }
 
     public void setSurname(String surname) {
-        this.surname = surname;
+        Surname = surname;
     }
 
-    public String[] getFunctionOfWorker() {
-        return functionOfWorker;
-    }
+    //замена цифр должностей из файла на название должностей в выводе на экран
+    public String getFunctionOfWorker()  {
+        String newFunction0 = "монтажник";
+        String newFunction1 = "каменоломщик";
+        String newFunction2 = "разработчик";
+        boolean tempString;
+        if (tempString = FunctionOfWorker.equals("0")) {
+            FunctionOfWorker = newFunction0;
+        }
 
-    public void setFunctionOfWorker(String[] functionOfWorker) {
-        this.functionOfWorker = functionOfWorker;
+        if (tempString = FunctionOfWorker.equals("1")) {
+            FunctionOfWorker = newFunction1;
+        }
+
+        if (tempString = FunctionOfWorker.equals("2")) {
+            FunctionOfWorker = newFunction2;
+        }
+
+        return FunctionOfWorker;
     }
 
     public int getSalary() {
-        return salary;
+        return Salary;
     }
 
     public void setSalary(int salary) {
-        this.salary = salary;
+        Salary = salary;
+
+
     }
+
+   public void setFunctionOfWorker(String functionOfWorker) {
+       FunctionOfWorker = functionOfWorker;
+   }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Worker worker = (Worker) o;
-        return salary == worker.salary && name.equals(worker.name) && surname.equals(worker.surname) && Arrays.equals(functionOfWorker, worker.functionOfWorker);
+        return Salary == worker.Salary && Name.equals(worker.Name) && Surname.equals(worker.Surname) && FunctionOfWorker.equals(worker.FunctionOfWorker);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(name, surname, salary);
-        result = 31 * result + Arrays.hashCode(functionOfWorker);
-        return result;
+        return Objects.hash(Name, Surname, FunctionOfWorker, Salary);
     }
 
     @Override
     public String toString() {
-        return "Worker{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", functionOfWorker=" + Arrays.toString(functionOfWorker) +
-                ", salary=" + salary +
-                '}';
+        return "" +
+                "Имя: " + Name + '\'' +
+                ", Фамилия: " + Surname + '\'' +
+               ", Должность:'" + getFunctionOfWorker() + '\'' +
+                ", Заработная плата: " + Salary +
+                "'\n'";
     }
-
-
-
-
+}

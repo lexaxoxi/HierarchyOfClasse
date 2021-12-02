@@ -4,7 +4,7 @@ public class Quarry extends Worker {
 
    private String laws[];
 
-    public Quarry(String name, String surname, String[] functionOfWorker, int salary, String[] laws) {
+    public Quarry(String name, String surname, String functionOfWorker, int salary, String[] laws) {
         super(name, surname, functionOfWorker, salary);
         this.laws = laws;
         laws = new String[3];

@@ -8,7 +8,13 @@ public interface WorkerRepository {
     //выдает информацию обо всех сотрудниках
     List <Worker> findAll();
 
-    //выдает сумму зарплаты сотруднику
-    Double getSalary();
+    //выдает информацию об одном сотруднике
+    List<Worker> findByName(String name);
+
+    //выдает размер общей зарплаты сотрудников
+    Long getSumOfSalary();
+
+    //выдает размер зарплаты сотрудника
+    List<Worker> getSalary();
 
 }

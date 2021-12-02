@@ -22,7 +22,6 @@ public class WorkerRepositoryImpl implements WorkerRepository{
             String[] parsedLine = line.split("]\\[");
             return new Worker (parsedLine[0],
                     parsedLine[1],
-                    //todo сделать массив чтоб корректно работал или не массив сделать в Worker
                     parsedLine[2],
                     Integer.parseInt (parsedLine[3]));
 
@@ -38,6 +37,7 @@ public class WorkerRepositoryImpl implements WorkerRepository{
         }
     }
 
+    //вывод всей информации о ВСЕХ сотрудниках
     public List<Worker> findAll() {
         return common(PATH_TO_AUTO, reader ->
                 reader.lines()
@@ -46,16 +46,43 @@ public class WorkerRepositoryImpl implements WorkerRepository{
                         .collect(Collectors.toList()));
     }
 
+    //вывод всей информации об одном сотруднике, имя вводится в Main
     @Override
-    public Double getSalary() {
+    public List<Worker> findByName(String name) {
         return common(PATH_TO_AUTO, reader ->
                 reader.lines()
                         .map(workerMapper)
-                        .map(Worker :: getSalary)
-                        .map(Worker::getName)//что-то ругается не может перевести int в String
-                        .map(Worker::getSurname)
-                        .distinct()
-                        .count());
+                        .filter(worker -> worker.getName().equals(name))
+                        .sorted(Comparator.comparing(Worker::getName))
+                        .collect(Collectors.toList()));
+            }
+
+    //вывод суммы зарплаты организации
+    @Override
+    public Long getSumOfSalary () {
+        return common(PATH_TO_AUTO, reader ->
+                reader.lines()
+                        .map(workerMapper)
+                        .mapToLong(Worker::getSalary)
+                        .sum());
+    }
+
+
+    @Override
+    public List<Worker> getSalary() {
+        return common(PATH_TO_AUTO, reader -> {
+            return reader.lines()
+
+                    .map(workerMapper)
+                    .sorted(Comparator.comparing(Worker::getSalary))
+                    //.mapToInt(Worker::getName)
+                    //.map(Worker::getSurname)
+                    //  .map(Worker::getSalary)
+                    //    .distinct()
+                    .collect(Collectors.toList());
+        });
+
+
     }
 
 }
