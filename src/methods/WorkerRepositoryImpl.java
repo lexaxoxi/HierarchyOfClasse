@@ -18,8 +18,8 @@ public class WorkerRepositoryImpl implements WorkerRepository{
         if (line == null || line.isEmpty()) {
             return null;
         } else {
-            line = line.substring(1, line.length() - 1);
-            String[] parsedLine = line.split("]\\[");
+            line = line.substring(0, line.length() );
+            String[] parsedLine = line.split("#");
             return new Worker (parsedLine[0],
                     parsedLine[1],
                     parsedLine[2],
@@ -67,22 +67,23 @@ public class WorkerRepositoryImpl implements WorkerRepository{
                         .sum());
     }
 
-
+    //вывод сотрудников по возрастанию зарплаты
     @Override
     public List<Worker> getSalary() {
         return common(PATH_TO_AUTO, reader -> {
             return reader.lines()
 
-                    .map(workerMapper)
+                    .map(line -> {
+                String parsedLine[] = line.split("#");
+                return new Worker (parsedLine[0],
+                        parsedLine[1],
+                        parsedLine[2],
+                        Integer.parseInt(parsedLine[3]));
+            })
                     .sorted(Comparator.comparing(Worker::getSalary))
-                    //.mapToInt(Worker::getName)
-                    //.map(Worker::getSurname)
-                    //  .map(Worker::getSalary)
-                    //    .distinct()
                     .collect(Collectors.toList());
+
         });
 
-
-    }
-
+    };
 }

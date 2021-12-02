@@ -3,6 +3,7 @@ package app;
 import methods.WorkerRepository;
 import methods.WorkerRepositoryImpl;
 
+//Сотрудники организации находятся в файле "DB of workers.txt"
 public class Main {
     public static void main(String[] args) {
        WorkerRepository workerRepository = new WorkerRepositoryImpl();
@@ -13,12 +14,11 @@ public class Main {
        System.out.println("\n"+"Следующий метод- поиск по имени:");
        System.out.println(workerRepository.findByName("Alex"));
 
-        System.out.println("\n"+"Следующий метод- сумма зарплат организации:");
+        System.out.println("\n"+"Сумма зарплат организации:");
         System.out.println(workerRepository.getSumOfSalary());
 
-       //todo сделать вывод фио и зп по возрастанию
         System.out.println("\n"+"Информация о зарплате сотрудников:");
-        System.out.println("ФИО: " + workerRepository.getSalary());
+        System.out.println(workerRepository.getSalary());
 
 
     }

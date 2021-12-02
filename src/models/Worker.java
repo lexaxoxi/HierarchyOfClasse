@@ -16,6 +16,9 @@ public class Worker {
         Salary = salary;
     }
 
+    public Worker(String name, String surname, int salary) {
+    }
+
 
     public String getName() {
         return Name;
@@ -39,6 +42,8 @@ public class Worker {
         String newFunction1 = "каменоломщик";
         String newFunction2 = "разработчик";
         boolean tempString;
+
+
         if (tempString = FunctionOfWorker.equals("0")) {
             FunctionOfWorker = newFunction0;
         }
@@ -83,11 +88,11 @@ public class Worker {
 
     @Override
     public String toString() {
-        return "" +
-                "Имя: " + Name + '\'' +
-                ", Фамилия: " + Surname + '\'' +
+        return "Имя: " + Name +
+                ", Фамилия: " + Surname +
                ", Должность:'" + getFunctionOfWorker() + '\'' +
                 ", Заработная плата: " + Salary +
-                "'\n'";
+                "\n";
     }
+
 }

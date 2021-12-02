@@ -1,7 +1,7 @@
-[Alex][Moskovkin][2][45000]
-[Anna][Moskovkina][2][40000]
-[Arina][Moskovkina][0][25000]
-[Agnia][Moskovkina][1][35000]
-[Alex2][Oskovkin][0][40000]
-[Alex3][Skovkin][1][35000]
-[Alex4][Kovkin][2][25000]
+Alex#Moskovkin#2#30000
+Mosk#Alexeev#2#40000
+Omsk#Omskov#0#25000
+Moskwa#Stolichova#1#50000
+Oleg#Volkov#0#40000
+Vova#Culemin#1#35000
+Farid#Kirillov#2#25000

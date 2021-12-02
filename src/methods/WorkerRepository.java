@@ -14,7 +14,7 @@ public interface WorkerRepository {
     //выдает размер общей зарплаты сотрудников
     Long getSumOfSalary();
 
-    //выдает размер зарплаты сотрудника
+    //выдает сотрудников по возрастанию зарплаты
     List<Worker> getSalary();
 
 }
